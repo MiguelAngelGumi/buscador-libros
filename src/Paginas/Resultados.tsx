@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { buscarLibros } from '../Services/ServiciosLibros';
@@ -11,11 +10,13 @@ const Resultados: React.FC = () => {
   const parametros = new URLSearchParams(location.search);
   const termino = parametros.get('q') || '';
 
+  // Estado para los libros, el índice de inicio y la carga
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [libros, setLibros] = useState<any[]>([]);
   const [startIndex, setStartIndex] = useState(0);
   const [loading, setLoading] = useState(false);
 
+  // Función para cargar los libros
   const cargarLibros = async (nuevoStartIndex = 0) => {
     setLoading(true);
     try {
@@ -26,17 +27,20 @@ const Resultados: React.FC = () => {
         setLibros((prev) => [...prev, ...nuevosLibros]);
       }
     } catch (error) {
-      console.error("Error al buscar libros:", error);
+      console.error('Error al buscar libros:', error);
     } finally {
       setLoading(false);
     }
   };
 
+  // Cargar los libros cada vez que cambia el término de búsqueda
   useEffect(() => {
-    setStartIndex(0);
-    cargarLibros(0);
+    setStartIndex(0); // Restablecer el índice de inicio
+    cargarLibros(0); // Cargar los primeros resultados
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [termino]);
 
+  // Función para ver más resultados
   const verMas = () => {
     const nuevoIndice = startIndex + 9;
     setStartIndex(nuevoIndice);
@@ -56,7 +60,7 @@ const Resultados: React.FC = () => {
 
       {loading && <p>Cargando libros...</p>}
 
-      <div 
+      <div className="row">
         {libros.length > 0 ? (
           libros.map((libro) => (
             <div className="col" key={libro.id}>
@@ -70,7 +74,7 @@ const Resultados: React.FC = () => {
 
       {libros.length > 0 && (
         <div className="text-center my-4">
-          <button className="btn btn-outline-primar" onClick={verMas}>
+          <button className="btn btn-outline-primary" onClick={verMas}>
             🔄 Ver más resultados
           </button>
         </div>
@@ -80,4 +84,5 @@ const Resultados: React.FC = () => {
 };
 
 export default Resultados;
+
 
