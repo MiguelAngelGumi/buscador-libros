@@ -1,0 +1,38 @@
+.inicio {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px; /* espacio para que no tape la navbar */
+}
+
+.contenido {
+  background-color: rgba(0, 0, 0, 0.6); /* fondo oscuro semitransparente */
+  padding: 3rem;
+  border-radius: 15px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  max-width: 700px;
+}
+
+.contenido h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.app-nombre {
+  color: #ffd700;
+  font-style: italic;
+}
+
+.contenido p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  font-style: italic;
+}
