@@ -56,7 +56,7 @@ const Resultados: React.FC = () => {
 
       {loading && <p>Cargando libros...</p>}
 
-      <div className="row row-cols-1 row-cols-md-3 g-4">
+      <div 
         {libros.length > 0 ? (
           libros.map((libro) => (
             <div className="col" key={libro.id}>
